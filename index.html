@@ -1,0 +1,34 @@
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  $(function () {
+    var socket = io.connect('/');
+    socket.on('update', function (data) {
+      console.log(data);
+
+      var str;
+
+      switch (data.users) {
+        case 1: str = "A partridge in a pear tree"; break;
+        case 2: str = "2 turtle doves"; break;
+        case 3: str = "3 french hens"; break;
+        case 4: str = "4 calling birds"; break;
+        case 5: str = "5 golden rings"; break;
+        case 6: str = "6 geese a-laying"; break;
+        case 7: str = "7 swans a-swimming"; break;
+        case 8: str = "8 maids a-milking"; break;
+        case 9: str = "9 ladies dancing"; break;
+        case 10: str = "10 lords a-leaping"; break;
+        case 11: str = "11 pipers piping"; break;
+        case 12: str = "12 drummers drumming"; break;
+        default: str = data.users + " viewers";
+      }
+
+      $('p').text(str);
+    });
+  });
+</script>
+
+<small>The text below is the number of people viewing this page, but with the relevant line from "12 Days of Christmas", or the word "viewers"</small>
+
+<p>
